@@ -1,38 +1,55 @@
+// C program for implementation of selection sort
 #include <stdio.h>
 
-int main(){
-    /*
-    أكتب برنامج بلغة السي لقراءة مصفوفة وترتيب عناصرها ( تصاعدي - تنازلي ) باستخدام الترتيب الإختياري Selection Sorting . وطباعة المصفوفة بعد الترتيب.
+void swap(int *xp, int *yp)
+{
+	int temp = *xp;
+	*xp = *yp;
+	*yp = temp;
+}
+
+void selectionSort(int arr[], int n)
+{
+	int i, j, min_idx;
+
+	// One by one move boundary of unsorted subarray
+	for (i = 0; i < n-1; i++)
+	{
+		// Find the minimum element in unsorted array
+		min_idx = i;
+		for (j = i+1; j < n; j++)
+		if (arr[j] < arr[min_idx])
+			min_idx = j;
+
+		// Swap the found minimum element with the first element
+		if(min_idx != i)
+			swap(&arr[min_idx], &arr[i]);
+	}
+}
+
+/* Function to print an array */
+void printArray(int arr[], int size)
+{
+	int i;
+	for (i=0; i < size; i++)
+		printf("%d ", arr[i]);
+	printf("\n");
+}
+
+int main()
+{
+    printf("enter the number of elements in the array : ");
+    int num;
+    scanf("%d",&num);
+    int arr[num];
+    for (int i = 0; i < num; i++)
+    {
+        printf("enter the %d element : ",i+1);
+        scanf("%d",&arr[i]);
+    }
     
-    */
-    printf("Enter the number of elements in the array: ");
-    int n;
-    scanf("%d", &n);
-    int arr[n];
-
-    for(int i = 0; i < n; i++){
-        printf("Enter the element number %d: ", i+1);
-        scanf("%d", &arr[i]);
-    }
-    for(int i = 0; i < n; i++){
-        // select sort
-        int min = arr[i];
-        int min_index = i;
-        for(int j = i; j < n; j++){
-            if(arr[j] < min){
-                min = arr[j];
-                min_index = j;
-            }
-        }
-        int temp = arr[i];
-
-
-    }
-
-
-    for(int i = 0; i < n; i++){
-        printf("%d ", arr[i]);
-    }
-    
-    return 0;
+	selectionSort(arr, num);
+	printf("Sorted array: \n");
+	printArray(arr, num);
+	return 0;
 }
