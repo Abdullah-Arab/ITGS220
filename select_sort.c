@@ -38,7 +38,11 @@ void printArray(int arr[], int size)
 
 int main()
 {
-    printf("enter the number of elements in the array : ");
+/*
+أكتب برنامج بلغة السي لقراءة مصفوفة وترتيب عناصرها ( تصاعدي - تنازلي ) باستخدام الترتيب الإختياري Selection Sorting . وطباعة المصفوفة بعد الترتيب.
+*/
+
+    printf("enter the number o f elements in the array : ");
     int num;
     scanf("%d",&num);
     int arr[num];
